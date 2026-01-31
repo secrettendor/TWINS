@@ -2,174 +2,71 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>TOP 10 – PEOPLE’S FACE OF THE YEAR</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choicely Voting Widgets</title>
 <style>
-body{
-  margin:0;
-  padding:16px;
-  background:#111;
-  font-family:Arial, sans-serif;
-}
-h2{
-  color:#fff;
-  text-align:center;
-  margin-bottom:16px;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:14px;
-}
-.card{
-  background:#000;
-  border-radius:12px;
-  overflow:hidden;
-  padding:8px;
-}
-@media(max-width:768px){
-  .grid{grid-template-columns:1fr;}
-}
+  body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+    background: #f0f0f0;
+  }
+  .widget-container {
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+  }
 </style>
 </head>
-
 <body>
-<h2>TOP 10 – PEOPLE’S FACE OF THE YEAR</h2>
 
-<div class="grid">
+<!-- 10 Widgets -->
+<div id="widget1" class="widget-container"></div>
+<div id="widget2" class="widget-container"></div>
+<div id="widget3" class="widget-container"></div>
+<div id="widget4" class="widget-container"></div>
+<div id="widget5" class="widget-container"></div>
+<div id="widget6" class="widget-container"></div>
+<div id="widget7" class="widget-container"></div>
+<div id="widget8" class="widget-container"></div>
+<div id="widget9" class="widget-container"></div>
+<div id="widget10" class="widget-container"></div>
 
-<!-- 10 embedded Choicely widgets -->
-<div class="card">
 <script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-1','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
+(function(w,d,src){
+  const widgets = [
+    {bid:"choicely-widget-1", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQx"},
+    {bid:"choicely-widget-2", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQy"},
+    {bid:"choicely-widget-3", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQz"},
+    {bid:"choicely-widget-4", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ0"},
+    {bid:"choicely-widget-5", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ1"},
+    {bid:"choicely-widget-6", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ2"},
+    {bid:"choicely-widget-7", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ3"},
+    {bid:"choicely-widget-8", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ4"},
+    {bid:"choicely-widget-9", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQ5"},
+    {bid:"choicely-widget-10", wk:"Y2hvaWNlbHktZXUvd2lkZ2V0cy9XaWRnZXQxMA"}
+  ];
 
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-2','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
+  // Load Choicely JS once
+  const s = d.createElement('script');
+  s.async = 1;
+  s.src = src + '?t=' + Date.now();
+  s.onload = () => {
+    widgets.forEach((wObj, i) => {
+      const container = d.getElementById('widget'+(i+1));
+      container.addEventListener('click', () => {
+        if(w.ChoicelyWidget) w.ChoicelyWidget.i({bid: wObj.bid, wk: wObj.wk, container: container});
+      });
+    });
+  };
+  d.head.appendChild(s);
 
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-3','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
+})(window, document, 'https://cdn.choicely.com/vx/widget.js');
 </script>
-</div>
 
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-4','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-5','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-6','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-7','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-8','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-9','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-<div class="card">
-<script>
-(function(w,d,id,src){
- var p={"bid":"choicely-widget-67152a0916e2","wk":"Y2hvaWNlbHktZXUvd2lkZ2V0cy90TXBOU2t0bkNkbXhqZHl4VEVySw"};
- var s=d.createElement('script');
- s.async=1; s.id=id;
- s.onload=function(){w.ChoicelyWidget.i(p)};
- s.src=src;
- d.getElementsByTagName('head')[0].appendChild(s);
-})(window,document,'choicely-widget-10','https://cdn.choicely.com/vx/widget.js?t='+Date.now());
-</script>
-</div>
-
-</div>
 </body>
 </html>
